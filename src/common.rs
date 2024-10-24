@@ -8,6 +8,7 @@ use std::{
     mem::{zeroed, size_of},
     sync::Once,
     ptr::{self},
+    path::Path,
 };
 
 use winapi::{
