@@ -1,6 +1,10 @@
-#![allow(non_snake_case, non_camel_case_types,dead_code,unused_imports)]
+#![allow(non_snake_case, non_camel_case_types,dead_code)]
 
+mod runpe;
 mod common;
+mod unhook;
+mod patch;
+
 
 use std::ffi::CStr;
 use std::os::raw::{c_char, c_void};
@@ -95,14 +99,17 @@ pub extern "system" fn NyxInvoke(_hwnd: *mut c_void, _hinst: *mut c_void, lpszCm
         match Cli::try_parse_from(cli_args) {
             Ok(cli) => {
                 match cli.mode {
-                    Mode::Clr { args, base, key, iv, assembly } => {
-                        execute_clr_mode(args, base, key, iv, assembly)
+                    Mode::Clr { args, base, key, iv, assembly, unencrypted} => {
+                        execute_clr_mode(args, base, key, iv, assembly, unencrypted)
                     },
                     Mode::Ps { command, script } => {
                         execute_ps_mode(command, script)
                     },
-                    Mode::Bof { args, base, key, iv, bof } => {
-                        execute_bof_mode(args, base, key, iv, bof)
+                    Mode::Bof { args, base, key, iv, bof, unencrypted } => {
+                        execute_bof_mode(args, base, key, iv, bof, unencrypted)
+                    },
+                    Mode::Pe { args, base, key, iv, pe, unencrypted } => {
+                        execute_pe_mode(args, base, key, iv, pe, unencrypted)
                     },
                 }
             },
