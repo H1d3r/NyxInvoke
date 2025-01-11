@@ -235,6 +235,7 @@ In the `resources` directory, you'll find several files to test NyxInvoke's func
 
 - Dll Compiled EXE Executaion
 
+![pe](https://github.com/user-attachments/assets/685d5f13-7b26-4dd8-9084-f07aea3f8ec5)
 
 
 - Dll Powershell Script Executaion 
