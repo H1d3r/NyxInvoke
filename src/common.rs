@@ -319,7 +319,7 @@ pub enum Mode {
     )]
     Clr {
         /// Arguments to pass to the assembly
-        #[arg(long, value_name = "ARGS", num_args = 1.., value_delimiter = ' ', short = 'a')]
+        #[arg(long, value_name = "ARGS", num_args = 1.., value_delimiter = ' ', short = 'a', allow_hyphen_values = true)]
         args: Vec<String>,
 
         /// Base URL or path for resources
@@ -350,7 +350,7 @@ pub enum Mode {
     )]
     Bof {
         /// Arguments to pass to the BOF
-        #[arg(long, value_name = "ARGS", num_args = 1.., value_delimiter = ' ',short = 'a')]
+        #[arg(long, value_name = "ARGS", num_args = 1.., value_delimiter = ' ', short = 'a', allow_hyphen_values = true)]
         args: Option<Vec<String>>,
 
         /// Base URL or path for resources
@@ -381,7 +381,7 @@ pub enum Mode {
     )]
     Pe {
         /// Arguments to pass to the PE
-        #[arg(long, value_name = "ARGS", num_args = 1.., value_delimiter = ' ', short = 'a')]
+        #[arg(long, value_name = "ARGS", num_args = 1.., value_delimiter = ' ', short = 'a', allow_hyphen_values = true)]
         args: Option<Vec<String>>,
 
         /// Base URL or path for resources
